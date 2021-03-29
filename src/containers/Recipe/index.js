@@ -4,9 +4,12 @@ import { withRouter } from 'react-router-dom';
 
 import { findRecipe } from 'src/selectors/recipes';
 
-const mapStateToProps = (state) => ({
-  recipe: findRecipe(state.recipes.list, 'crepes-raffinees'),
-});
+const mapStateToProps = (state, ownProps) => {
+  const { slug } = ownProps.match.params;
+  return {
+    recipe: findRecipe(state.recipes.list, slug),
+  };
+};
 
 const mapDispatchToProps = {};
 

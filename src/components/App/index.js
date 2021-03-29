@@ -25,7 +25,9 @@ function App(props) {
         <Route path="/" exact>
           <Home />
         </Route>
-        <Route path="/recipe">
+        {/* Le regex ( ce qu'il y a entre parenthèse aprés le paramètre ) */}
+        {/* n'est pas obligatoire du tout, c'est un filtre supplémentaire */}
+        <Route path="/recipe/:slug([a-z\-\_]+)">
           <Recipe />
         </Route>
         <Route>
