@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Menu from 'src/components/Menu';
+import Menu from 'src/containers/Menu';
 import Home from 'src/containers/Home';
 // import Recipe from 'src/containers/Recipe';
 // import Error from 'src/components/Error';
