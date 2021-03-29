@@ -1,6 +1,6 @@
 /* eslint-disable arrow-body-style */
 // == Import : npm
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
@@ -8,6 +8,7 @@ import { Redirect } from 'react-router-dom';
 // Composants
 import Page from 'src/components/Page';
 import AppHeader from 'src/components/AppHeader';
+import Loading from 'src/components/Loading';
 import Header from './Header';
 import Ingredients from './Ingredients';
 import Instructions from './Instructions';
@@ -16,10 +17,17 @@ import Instructions from './Instructions';
 import './style.scss';
 
 // == Composant
-function Recipe({ recipe }) {
+function Recipe({ recipe, loading }) {
+  if (loading) {
+    return <Loading />;
+  }
   if (!recipe) {
     return <Redirect to="/error" />;
   }
+  // Bonus
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [recipe]);
   return (
     <Page>
       <AppHeader />
@@ -50,10 +58,12 @@ Recipe.propTypes = {
     ingredients: PropTypes.array.isRequired,
     instructions: PropTypes.array.isRequired,
   }),
+  loading: PropTypes.bool,
 };
 
 Recipe.defaultProps = {
   recipe: null,
+  loading: false,
 };
 
 // == Export

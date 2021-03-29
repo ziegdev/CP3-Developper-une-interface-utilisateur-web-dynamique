@@ -31,4 +31,8 @@
       box-shadow: inset -3px 0 0 vars.$color;
     }
   }
+  .menu-loading {
+    color: white;
+    padding: vars.$gutter;
+  }
 }

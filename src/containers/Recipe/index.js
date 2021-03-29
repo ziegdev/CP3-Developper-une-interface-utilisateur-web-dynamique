@@ -8,6 +8,7 @@ const mapStateToProps = (state, ownProps) => {
   const { slug } = ownProps.match.params;
   return {
     recipe: findRecipe(state.recipes.list, slug),
+    loading: state.recipes.loading,
   };
 };
 

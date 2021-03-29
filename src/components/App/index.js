@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   Switch,
@@ -10,14 +10,13 @@ import Home from 'src/containers/Home';
 import Recipe from 'src/containers/Recipe';
 import Error from 'src/components/Error';
 
-import Loading from './Loading';
-
 import './style.scss';
 
-function App(props) {
-  if (props.loading) {
-    return <Loading />;
-  }
+function App({ fetchRecipes }) {
+  useEffect(() => {
+    fetchRecipes();
+  }, []);
+
   return (
     <div className="app">
       <Menu />
@@ -39,11 +38,12 @@ function App(props) {
 }
 
 App.propTypes = {
-  loading: PropTypes.bool,
+  fetchRecipes: PropTypes.func,
 };
 
 App.defaultProps = {
-  loading: false,
+  fetchRecipes: () => {},
 };
+
 
 export default App;
