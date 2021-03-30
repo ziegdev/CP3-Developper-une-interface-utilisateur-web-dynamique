@@ -8,6 +8,9 @@
  * @return {Object} - La recette trouvée
  */
 export function findRecipe(recipes, searchedSlug) {
+  if (!Array.isArray(recipes)) {
+    throw new TypeError('recipes parameter is no an array');
+  }
   const recipe = recipes.find((testedRecipe) => {
     return testedRecipe.slug === searchedSlug;
   });

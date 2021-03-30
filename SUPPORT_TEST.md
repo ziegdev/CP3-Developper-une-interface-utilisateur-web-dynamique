@@ -52,7 +52,7 @@ yarn add --dev ignore-styles
     "mocha": true
   },
   "rules": {
-    "no-used-expressions": "off"
+    "no-unused-expressions": "off"
   }
 }
 ```

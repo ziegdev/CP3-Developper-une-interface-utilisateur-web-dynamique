@@ -1,3 +1,6 @@
+import { expect } from 'chai';
+import { findRecipe } from 'src/selectors/recipes';
+
 // On test :
 // - La structure comme on l'a fait pour le reducer
 // - On test un retour basique
@@ -8,3 +11,45 @@
 // Ref la doc de Chai
 // https://www.chaijs.com/api/bdd/
 
+// On décrit les tests pour les selectors de recipes
+describe('selectors for recipes', () => {
+  // Et là tout ce qui concerne notre selector findRecipe
+  describe('#findRecipe()', () => {
+    // Déjà la structure
+    describe('structure', () => {
+      // Ce doit être une fonction
+      it('should be a function', () => {
+        expect(findRecipe).to.be.a('function');
+      });
+      // Doit retourner undefined si il ne trouve pas la recette
+      it('should return undefined if not found', () => {
+        expect(findRecipe([], '')).to.be.undefined;
+      });
+      // Doit retourner l'élément qu'on cherche
+      it('should return an object if found', () => {
+        expect(findRecipe([{ slug: 'find-me' }], 'find-me')).to.be.an('object');
+      });
+      // Doit lancer une exception si jamais les paramètres ne sont pas envoyés
+      it('should throw error if has no parameter', () => {
+        // Dans le cas de to.throw, on oublie pas de mettre la fonction findRecipe
+        // dans un callback de expect ( c'est marqué dans la doc )
+        // si on le fait pas l'exception n'est pas capturée
+        expect(() => findRecipe()).to.throw(/recipes parameter is no an array/);
+      });
+    });
+    describe('execution', () => {
+      it('should found recipe is there was 2 element in array', () => {
+        const elements = [{ slug: 'find-me' }, { slug: 'not-find-me' }];
+        expect(findRecipe(elements, 'find-me')).to.be.equal(elements[0]);
+      });
+      it('should find first recipe in array', () => {
+        const elements = [{ slug: 'not-find-me' }, { slug: 'find-me' }, { slug: 'find-me' }];
+        expect(findRecipe(elements, 'find-me')).to.be.equal(elements[1]);
+      });
+      it('should work if an element has no slug', () => {
+        const elements = [{ title: 'not-find-me' }, { title: 'find-me' }, { slug: 'find-me' }];
+        expect(findRecipe(elements, 'find-me')).to.be.equal(elements[2]);
+      });
+    });
+  });
+});
