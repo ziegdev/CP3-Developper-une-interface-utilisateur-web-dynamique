@@ -51,7 +51,7 @@ yarn add --dev ignore-styles
   "env": {
     "mocha": true
   },
-  "rule": {
+  "rules": {
     "no-used-expressions": "off"
   }
 }
