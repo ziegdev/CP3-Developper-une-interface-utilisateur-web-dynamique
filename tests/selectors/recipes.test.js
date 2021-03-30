@@ -1,5 +1,8 @@
 import { expect } from 'chai';
-import { findRecipe } from 'src/selectors/recipes';
+import {
+  findRecipe,
+  getTitleFromRecipesNumber,
+} from 'src/selectors/recipes';
 
 // On test :
 // - La structure comme on l'a fait pour le reducer
@@ -49,6 +52,30 @@ describe('selectors for recipes', () => {
       it('should work if an element has no slug', () => {
         const elements = [{ title: 'not-find-me' }, { title: 'find-me' }, { slug: 'find-me' }];
         expect(findRecipe(elements, 'find-me')).to.be.equal(elements[2]);
+      });
+    });
+  });
+
+  describe('#getTitleFromRecipesNumber', () => {
+    describe('structure', () => {
+      it('should be a function', () => {
+        expect(getTitleFromRecipesNumber).to.be.a('function');
+      });
+      it('should return a string', () => {
+        expect(getTitleFromRecipesNumber()).to.be.a('string');
+      });
+    });
+    describe('execution', () => {
+      it('should return "Recette à venir. Revenez bientôt" when 0 recipe given', () => {
+        expect(getTitleFromRecipesNumber(0)).to.be.equal('Recette à venir. Revenez bientôt');
+      });
+      it('should return "Découvrez notre recette" when 1 recipe given', () => {
+        expect(getTitleFromRecipesNumber(1)).to.be.equal('Découvrez notre recette');
+      });
+      it('should return "Découvrez toutes nos recettes" when 2 or more recipes given', () => {
+        expect(getTitleFromRecipesNumber(2)).to.be.equal('Découvrez toutes nos recettes');
+        expect(getTitleFromRecipesNumber(10)).to.be.equal('Découvrez toutes nos recettes');
+        expect(getTitleFromRecipesNumber(100)).to.be.equal('Découvrez toutes nos recettes');
       });
     });
   });

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import {
+  getTitleFromRecipesNumber,
+} from 'src/selectors/recipes';
 import Page from 'src/components/Page';
 import AppHeader from 'src/components/AppHeader';
 import Content from 'src/components/Content';
@@ -14,7 +16,7 @@ const Home = ({ recipes, loading }) => (
       <Loading />
     ) : (
       <Content
-        title="Les recettes oRecipes"
+        title={getTitleFromRecipesNumber(recipes.length)}
         text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, explicabo."
         recipes={recipes}
       />
