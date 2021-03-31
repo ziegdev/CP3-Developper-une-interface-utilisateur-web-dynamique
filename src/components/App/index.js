@@ -12,8 +12,9 @@ import Error from 'src/components/Error';
 
 import './style.scss';
 
-function App({ fetchRecipes }) {
+function App({ rehydrate, fetchRecipes }) {
   useEffect(() => {
+    rehydrate();
     fetchRecipes();
   }, []);
 
@@ -39,11 +40,12 @@ function App({ fetchRecipes }) {
 
 App.propTypes = {
   fetchRecipes: PropTypes.func,
+  rehydrate: PropTypes.func,
 };
 
 App.defaultProps = {
   fetchRecipes: () => {},
+  rehydrate: () => {},
 };
-
 
 export default App;
