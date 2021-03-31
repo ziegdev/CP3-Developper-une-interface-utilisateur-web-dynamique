@@ -6,13 +6,13 @@ import Field from './Field';
 import './style.scss';
 
 const LoginForm = ({
-  email,
-  password,
-  changeField,
-  handleLogin,
-  handleLogout,
-  isLogged,
-  loggedMessage,
+  email, // Valeur du champ email
+  password, // Valeur du champ password
+  changeField, // Méthode pour changer la valeur d'un champ
+  handleLogin, // Action de se connecter
+  handleLogout, // Action de se déconnecter
+  isLogged, // Booléen qui représente si on est connecté ou pas
+  loggedMessage, // Message qui s'affiche quand on est connecté
 }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
