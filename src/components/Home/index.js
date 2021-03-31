@@ -6,27 +6,21 @@ import {
 import Page from 'src/components/Page';
 import AppHeader from 'src/components/AppHeader';
 import Content from 'src/components/Content';
-import Loading from 'src/components/Loading';
-import FavoriteRecipes from 'src/components/FavoriteRecipes';
+import FavoriteRecipes from 'src/containers/FavoriteRecipes';
 import './styles.scss';
 
 const Home = ({ recipes, loading, isLogged }) => (
   <Page>
     <AppHeader />
-    {loading ? (
-      <Loading />
-    ) : (
-      <>
-        {isLogged && (
-          <FavoriteRecipes />
-        )}
-        <Content
-          title={getTitleFromRecipesNumber(recipes.length)}
-          text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, explicabo."
-          recipes={recipes}
-        />
-      </>
+    {isLogged && (
+      <FavoriteRecipes />
     )}
+    <Content
+      title={getTitleFromRecipesNumber(recipes.length)}
+      text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, explicabo."
+      recipes={recipes}
+      loading={loading}
+    />
   </Page>
 );
 
