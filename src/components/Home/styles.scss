@@ -1,0 +1,7 @@
+@use 'src/styles/vars';
+
+.recipes-loading {
+  padding: vars.$gutter;
+  font-size: 1.3em;
+  text-align: center;
+}
