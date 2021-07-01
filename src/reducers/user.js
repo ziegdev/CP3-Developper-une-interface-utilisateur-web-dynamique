@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-export const initialState = {
-  logged: false,
-=======
 import {
   SET_USER_FIELD_VALUE,
   LOGIN,
@@ -14,13 +10,10 @@ export const initialState = {
   logged: false,
   token: null,
   pseudo: null,
->>>>>>> 9dd55619a1507129cd1dc56814dcedca3f4d4c96
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-<<<<<<< HEAD
-=======
     case SET_USER_FIELD_VALUE:
       return {
         ...state,
@@ -40,7 +33,6 @@ const reducer = (state = initialState, action = {}) => {
         token: null,
         logged: false,
       };
->>>>>>> 9dd55619a1507129cd1dc56814dcedca3f4d4c96
     default:
       return state;
   }

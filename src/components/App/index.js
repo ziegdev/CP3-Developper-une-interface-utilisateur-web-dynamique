@@ -1,27 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import PropTypes from 'prop-types';
-
-import Menu from 'src/components/Menu';
-import Home from 'src/containers/Home';
-// import Recipe from 'src/containers/Recipe';
-// import Error from 'src/components/Error';
-
-import Loading from './Loading';
-
-import './style.scss';
-
-function App(props) {
-  if (props.loading) {
-    return <Loading />;
-  }
-  return (
-    <div className="app">
-      <Menu />
-      <Home />
-      {/* <Recipe /> */}
-      {/* <Error /> */}
-=======
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -58,19 +34,11 @@ function App({ rehydrate, fetchRecipes }) {
           <Error />
         </Route>
       </Switch>
->>>>>>> 9dd55619a1507129cd1dc56814dcedca3f4d4c96
     </div>
   );
 }
 
 App.propTypes = {
-<<<<<<< HEAD
-  loading: PropTypes.bool,
-};
-
-App.defaultProps = {
-  loading: false,
-=======
   fetchRecipes: PropTypes.func,
   rehydrate: PropTypes.func,
 };
@@ -78,7 +46,6 @@ App.defaultProps = {
 App.defaultProps = {
   fetchRecipes: () => {},
   rehydrate: () => {},
->>>>>>> 9dd55619a1507129cd1dc56814dcedca3f4d4c96
 };
 
 export default App;
